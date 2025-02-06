@@ -7,3 +7,6 @@
 - Open the folders using Visual Studio (you can open the .sln file for each variant as well)
 - In the desired variant, edit the "config.txt" file with two positive integer values seperated by a space (ex."number_of_threads prime_num_range")
 - Run in Debug mode, can be with (F5) or without debugger (Ctrl + F5)
+
+# Public GitHub link:
+https://github.com/IceExconde/Threaded-Prime-Number-Search.git
