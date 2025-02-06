@@ -1,6 +1,6 @@
 # Threaded-Prime-Number-Search
 ## Problem Set 1 for STDISCM-S14 
-# by Exconde, Isiah Reuben C.
+### by Exconde, Isiah Reuben C.
 
 ## Instructions to Run
 - Download the folders contatining the variants
