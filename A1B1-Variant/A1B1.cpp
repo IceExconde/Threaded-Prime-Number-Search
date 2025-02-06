@@ -7,6 +7,12 @@
 
 std::mutex output_mutex;
 
+/**
+ * @brief Finds prime numbers in a given range and prints them immediately.
+ * @param start Start of the range.
+ * @param end End of the range.
+ * @param thread_id ID of the thread executing the function.
+ */
 void find_primes_print_immediately(int start, int end, int thread_id) {
     for (int num = start; num <= end; num++) {
         if (is_prime(num)) {

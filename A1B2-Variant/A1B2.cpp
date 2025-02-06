@@ -7,6 +7,13 @@
 
 std::mutex output_mutex;
 
+/**
+ * @brief Finds prime numbers using a round-robin approach and prints them immediately.
+ * @param start Start value for the thread.
+ * @param step Increment step for each iteration.
+ * @param range_limit Maximum limit of the range.
+ * @param thread_id ID of the thread executing the function.
+ */
 void find_primes_print_immediately_linear(int start, int step, int range_limit, int thread_id) {
     for (int num = start; num <= range_limit; num += step) {
         if (is_prime(num)) {

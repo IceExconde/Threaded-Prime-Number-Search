@@ -5,6 +5,12 @@
 #include <algorithm>
 #include "helper.h"
 
+/**
+ * @brief Finds prime numbers in a given range and stores them in a vector.
+ * @param start Start of the range.
+ * @param end End of the range.
+ * @param primes Reference to the vector storing primes.
+ */
 void find_primes_store_results(int start, int end, std::vector<int>& primes) {
     for (int num = start; num <= end; num++) {
         if (is_prime(num))

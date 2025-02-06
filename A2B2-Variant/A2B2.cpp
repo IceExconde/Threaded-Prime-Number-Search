@@ -5,6 +5,14 @@
 #include <algorithm>
 #include "helper.h"
 
+/**
+ * @brief Finds prime numbers using a round-robin approach and stores them in a vector.
+ *
+ * @param start Start value for the thread.
+ * @param step Increment step for each iteration.
+ * @param range_num Maximum limit of the range.
+ * @param primes Reference to the vector storing primes.
+ */
 void find_primes_store_results_linear(int start, int step, int range_num, std::vector<int>& primes) {
     for (int num = start; num <= range_num; num += step) {
         if (is_prime(num))

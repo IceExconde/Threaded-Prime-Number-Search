@@ -1,21 +1,36 @@
 #include "helper.h"
-#include <cstdio>   
-#include <errno.h>  
+#include <cstdio>
+#include <chrono>
+#include <ctime>
+#include <sstream>
+#include <iomanip>
 
+/**
+ * @brief Gets the current timestamp with millisecond precision.
+ * @return A formatted string containing the current time.
+ */
 std::string get_timestamp() {
-    auto now = std::chrono::system_clock::now();
-    std::time_t time_now = std::chrono::system_clock::to_time_t(now);
-    char buffer[26]; // Buffer must be at least 26 bytes for ctime_s.
-    errno_t err = ctime_s(buffer, sizeof(buffer), &time_now);
-    if (err != 0) {
-        return "Unknown time";
-    }
-    std::string timestamp(buffer);
-    if (!timestamp.empty() && timestamp.back() == '\n')
-        timestamp.pop_back();
-    return timestamp;
+    using namespace std::chrono;
+    auto now = system_clock::now();
+    auto ms = duration_cast<milliseconds>(now.time_since_epoch()) % 1000;
+    std::time_t now_time = system_clock::to_time_t(now);
+    std::tm local_tm;
+#ifdef _WIN32
+    localtime_s(&local_tm, &now_time);
+#else
+    localtime_r(&now_time, &local_tm);
+#endif
+    std::ostringstream oss;
+    oss << std::put_time(&local_tm, "%Y-%m-%d %H:%M:%S")
+        << '.' << std::setfill('0') << std::setw(3) << ms.count();
+    return oss.str();
 }
 
+/**
+ * @brief Determines whether a number is prime.
+ * @param num The number to check.
+ * @return true if num is prime, false otherwise.
+ */
 bool is_prime(int num) {
     if (num <= 1)
         return false;
